@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api/v1', apiRouter);
+app.use('/v1', apiRouter);
 
 app.use(
   session({

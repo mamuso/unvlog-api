@@ -13,12 +13,25 @@ const pool = mysql.createPool({
 
 let unvlogdb = {};
 
-unvlogdb.all = async () => {
-  const query = await pool.query(`SELECT * FROM posts`, (err, results) => {
-    if (err) {
-      return Promise.reject(err);
-    }
-    return results;
+unvlogdb.all = () => {
+  return new Promise((resolve, reject) => {
+    pool.query(`SELECT * FROM posts`, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(results[0]);
+    });
+  });
+};
+
+unvlogdb.one = id => {
+  return new Promise((resolve, reject) => {
+    pool.query(`SELECT * FROM posts WHERE id = ?`, [id], (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(results);
+    });
   });
 };
 
