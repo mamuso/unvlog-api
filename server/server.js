@@ -1,48 +1,21 @@
 'use strict';
 
 require('dotenv').config();
+
 const express = require('express');
-const graphqlHTTP = require('express-graphql');
-const { buildSchema } = require('graphql');
-// const session = require('express-session');
-// const apiRouter = require('./routes');
+const bodyParser = require('body-parser');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+
+const schema = require('./data/schema');
 
 const app = express();
 
-// app.use(express.json());
+// Graphql endpoint
+app.use('/v1', bodyParser.json(), graphqlExpress({ schema }));
 
-// app.use('/v1', apiRouter);
+// Graphiql for testing the API out
+app.use('/graphiql', graphiqlExpress({ endpointURL: 'v1' }));
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: true,
-//     saveUninitialized: true
-//   })
-// );
-
-// Construct a schema, using GraphQL schema language
-var MyGraphQLSchema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-// The root provides a resolver function for each API endpoint
-var root = {
-  hello: () => {
-    return 'Hello world!';
-  },
-};
-
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: MyGraphQLSchema,
-    rootValue: root,
-    graphiql: true
-}));
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on port ${process.env.PORT || 3000}`);
+app.listen(process.env.PORT, () => {
+  console.log(`GraphiQL is running on http://localhost:${process.env.PORT}/graphiql`);
 });
