@@ -16,29 +16,18 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mamuso/unvlog-api/issues"
   },
   "homepage": "https://github.com/mamuso/unvlog-api#readme",
   "dependencies": {
-    "ajv": "^5.5.2",
     "apollo-server-express": "^2.5.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.0",
-    "express-jwt": "^5.3.1",
-    "graphql": "^14.3.1",
-    "graphql-tools": "^4.0.4",
-    "jsonwebtoken": "^8.5.1",
-    "mysql2": "^1.6.5",
-    "nodemon": "^1.19.0",
-    "sequelize": "^5.8.6",
-    "slugify": "^1.3.4"
+    "express": "^4.17.1",
+    "graphql": "^14.3.1"
   },
   "devDependencies": {
+    "nodemon": "^1.19.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-strongloop": "^2.1.0",
