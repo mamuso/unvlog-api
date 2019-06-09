@@ -3,13 +3,13 @@
 const { gql } = require('apollo-server-express');
 
 const typeDef = gql`
-  type Pet {
-    name: String
-    type: String
+  type User {
+    login: String
+    email: String
   }
 
   extend type Query {
-    pets: [Pet]
+    users: [User]
   }
 `;
 

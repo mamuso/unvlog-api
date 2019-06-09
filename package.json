@@ -1,7 +1,7 @@
 {
   "name": "unvlog-api",
   "version": "0.0.1",
-  "description": "",
+  "description": "API for unvlog",
   "main": "server.js",
   "scripts": {
     "start": "node .",
@@ -9,7 +9,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint --ignore-path .gitignore .",
     "prettier-eslint": "prettier-eslint --write '{src,test}/**/*.{js,jsx}'",
-    "sequelize": "sequelize --options-path=database/options.js"
+    "sequelize": "sequelize --options-path=database/options.js",
+    "model:generate": "sequelize --options-path=database/options.js model:generate",
+    "db:migrate:create": "sequelize --options-path=database/options.js migration:create --name",
+    "db:migrate": "sequelize --options-path=database/options.js db:migrate",
+    "db:migrate:rollback": "sequelize --options-path=database/options.js db:migrate:undo",
+    "db:seed:create": "sequelize --options-path=database/options.js db:seed --name",
+    "db:seed": "sequelize --options-path=database/options.js db:seed:all",
+    "db:seed:rollback": "sequelize --options-path=database/options.js db:seed:undo:all"
   },
   "repository": {
     "type": "git",
@@ -23,6 +30,7 @@
   },
   "homepage": "https://github.com/mamuso/unvlog-api#readme",
   "dependencies": {
+    "ajv": "^5.5.2",
     "apollo-server-express": "^2.5.0",
     "express": "^4.17.1",
     "graphql": "^14.3.1",
@@ -30,6 +38,7 @@
     "sequelize": "^5.8.6"
   },
   "devDependencies": {
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-strongloop": "^2.1.0",
