@@ -1,13 +1,22 @@
 {
   "name": "unvlog-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "API for unvlog",
+  "main": "server.js",
   "scripts": {
-    "dev": "npx nodemon server/server.js -w server",
+    "start": "node .",
+    "dev": "npx nodemon server.js -w server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint --ignore-path .gitignore .",
-    "prettier-eslint": "prettier-eslint --write '{src,test}/**/*.{js,jsx}' "
+    "prettier-eslint": "prettier-eslint --write '{src,test}/**/*.{js,jsx}'",
+    "sequelize": "sequelize --options-path=database/options.js",
+    "model:generate": "sequelize --options-path=database/options.js model:generate",
+    "db:migrate:create": "sequelize --options-path=database/options.js migration:create --name",
+    "db:migrate": "sequelize --options-path=database/options.js db:migrate",
+    "db:migrate:rollback": "sequelize --options-path=database/options.js db:migrate:undo",
+    "db:seed:create": "sequelize --options-path=database/options.js db:seed --name",
+    "db:seed": "sequelize --options-path=database/options.js db:seed:all",
+    "db:seed:rollback": "sequelize --options-path=database/options.js db:seed:undo:all"
   },
   "repository": {
     "type": "git",
@@ -15,25 +24,29 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mamuso/unvlog-api/issues"
   },
   "homepage": "https://github.com/mamuso/unvlog-api#readme",
   "dependencies": {
-    "dotenv": "^8.0.0",
-    "express": "^4.17.0",
-    "express-session": "^1.16.1",
-    "mysql": "^2.17.1"
+    "ajv": "^5.5.2",
+    "apollo-server-express": "^2.5.0",
+    "express": "^4.17.1",
+    "graphql": "^14.3.1",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.6"
   },
   "devDependencies": {
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-strongloop": "^2.1.0",
     "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-prettier": "^3.1.0",
-    "nodemon": "^1.19.0",
+    "nodemon": "^1.19.1",
     "prettier-eslint": "^8.8.2",
-    "prettier-eslint-cli": "^4.7.1"
+    "prettier-eslint-cli": "^4.7.1",
+    "sequelize-cli": "^5.4.0"
   }
 }
