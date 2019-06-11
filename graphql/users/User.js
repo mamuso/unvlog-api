@@ -3,18 +3,19 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
     {
+      id: { type: DataTypes.INTEGER, primaryKey: true },
       login: DataTypes.STRING,
       email: DataTypes.STRING,
-      last_login: DataTypes.DATE,
+      lastLogin: DataTypes.DATE,
       city: DataTypes.STRING,
       country: DataTypes.STRING,
       pro: DataTypes.BOOLEAN,
-      screen_name: DataTypes.STRING,
+      screenName: DataTypes.STRING,
       language: DataTypes.STRING,
-      notify_new_comments: DataTypes.BOOLEAN,
+      notifyNewComments: DataTypes.BOOLEAN,
       new: DataTypes.BOOLEAN,
-      has_six_contacts: DataTypes.BOOLEAN,
-      comment_on_three_blogs: DataTypes.BOOLEAN
+      hasSixContacts: DataTypes.BOOLEAN,
+      commentOnThreeBlogs: DataTypes.BOOLEAN
     },
     {}
   );

@@ -2,50 +2,33 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface
-      .createTable('Users', {
+      .createTable('Blogs', {
         id: {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
           type: Sequelize.INTEGER
         },
-        login: {
+        slug: {
           type: Sequelize.STRING
         },
-        email: {
+        title: {
           type: Sequelize.STRING
         },
-        lastLogin: {
-          type: Sequelize.DATE,
-          allowNull: true,
-          defaultValue: Sequelize.literal('NOW()')
-        },
-        city: {
+        aboutMe: {
           type: Sequelize.STRING
         },
-        country: {
+        lastPostDate: {
+          type: Sequelize.DATE
+        },
+        userId: {
+          type: Sequelize.INTEGER
+        },
+        colorBack: {
           type: Sequelize.STRING
         },
-        pro: {
-          type: Sequelize.BOOLEAN
-        },
-        screenName: {
+        colorLink: {
           type: Sequelize.STRING
-        },
-        language: {
-          type: Sequelize.STRING
-        },
-        notifyNewComments: {
-          type: Sequelize.BOOLEAN
-        },
-        new: {
-          type: Sequelize.BOOLEAN
-        },
-        hasSixContacts: {
-          type: Sequelize.BOOLEAN
-        },
-        commentOnThreeBlogs: {
-          type: Sequelize.BOOLEAN
         },
         createdAt: {
           type: Sequelize.DATE,
@@ -57,19 +40,19 @@ module.exports = {
         }
       })
       .then(() =>
-        queryInterface.addIndex('Users', ['email'], {
+        queryInterface.addIndex('Blogs', ['slug'], {
           unique: true,
-          name: 'email'
+          name: 'slug'
         })
       )
       .then(() =>
-        queryInterface.addIndex('Users', ['login'], {
+        queryInterface.addIndex('Blogs', ['userId'], {
           unique: true,
-          name: 'login'
+          name: 'userId'
         })
       );
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Blogs');
   }
 };

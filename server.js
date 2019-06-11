@@ -4,14 +4,15 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 
 const users = require('./graphql/users');
+const blogs = require('./graphql/blogs');
 
 const typeDef = gql`
   type Query
 `;
 
 const server = new ApolloServer({
-  typeDefs: [typeDef, users.typeDef],
-  resolvers: [users.resolvers]
+  typeDefs: [typeDef, users.typeDef, blogs.typeDef],
+  resolvers: [users.resolvers, blogs.resolvers]
 });
 
 // Create our express app

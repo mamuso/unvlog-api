@@ -4,12 +4,15 @@ const { gql } = require('apollo-server-express');
 
 const typeDef = gql`
   type User {
-    login: String
-    email: String
+    id: Int!
+    login: String!
+    email: String!
+    blog: Blog!
   }
 
   extend type Query {
     users: [User]
+    blog(id: Int): Blog
   }
 `;
 
