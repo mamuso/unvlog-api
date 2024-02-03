@@ -31,7 +31,7 @@
   "homepage": "https://github.com/mamuso/unvlog-api#readme",
   "dependencies": {
     "ajv": "^5.5.2",
-    "apollo-server-express": "^2.5.0",
+    "apollo-server-express": "^3.13.0",
     "express": "^4.17.1",
     "graphql": "^14.3.1",
     "mysql2": "^1.6.5",
